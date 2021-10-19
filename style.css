@@ -1,0 +1,17 @@
+#userTable {
+    border-collapse: collapse;
+}
+
+#userTable tr {
+    border-bottom: 2px solid rgba(211, 204, 204, 0.4);
+    border-top: 2px solid #fff;
+}
+
+th {
+    text-align: center;
+    width: 30px;
+}
+
+td {
+    height: 60px;
+}

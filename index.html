@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid text-center col-xs-12 col-md-8 col-md-offset-2">
+        <div class="table-responsive">
+            <h1>Binding JSON file data to Html Table</h1>
+            <button type="button" class="btn btn-sm btn-success load">
+          Click to load data
+        </button>
+            <table class="table" id="userTable">
+                <tr class="text-primary">
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Date Created</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $.fn.myFunction = function() {
+                $.getJSON(
+                    "https://sangharsha-singh-kushwaha.github.io/http-Sangharsha-Singh-Kushwaha.github.io-dvsData/user.json",
+                    function(data) {
+                        var userData = "";
+                        $.each(data, function(key, value) {
+                            userData += "<tr>";
+                            userData += "<td>" + value.serialNo + "</td>";
+                            userData += "<td>" + value.name + "</td>";
+                            userData += "<td>" + value.dateCreated + "</td>";
+                            userData += "<td>" + value.role + "</td>";
+                            userData += "<td>" + value.status + "</td>";
+                            userData += "<tr/>";
+                        });
+                        $("#userTable").append(userData);
+                    }
+                );
+            };
+
+            $(".load").click(function() {
+                $.fn.myFunction();
+            });
+        });
+    </script>
+</body>
+
+</html>
